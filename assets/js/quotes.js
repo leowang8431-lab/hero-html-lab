@@ -3,26 +3,26 @@
   'use strict';
 
   const quotes = [
-    { id: 'q01', text: '学而时习之，不亦说乎？', author: '孔子', source: '《论语·学而》', category: 'learning' },
-    { id: 'q02', text: '知之为知之，不知为不知，是知也。', author: '孔子', source: '《论语·为政》', category: 'learning' },
-    { id: 'q03', text: '学而不思则罔，思而不学则殆。', author: '孔子', source: '《论语·为政》', category: 'learning' },
-    { id: 'q04', text: '温故而知新，可以为师矣。', author: '孔子', source: '《论语·为政》', category: 'learning' },
-    { id: 'q05', text: '三人行，必有我师焉。', author: '孔子', source: '《论语·述而》', category: 'learning' },
-    { id: 'q06', text: '敏而好学，不耻下问。', author: '孔子', source: '《论语·公冶长》', category: 'learning' },
-    { id: 'q07', text: '天行健，君子以自强不息。', author: '《周易》', source: '《乾·象传》', category: 'courage' },
-    { id: 'q08', text: '士不可以不弘毅，任重而道远。', author: '曾子', source: '《论语·泰伯》', category: 'courage' },
-    { id: 'q09', text: '不以物喜，不以己悲。', author: '范仲淹', source: '《岳阳楼记》', category: 'courage' },
-    { id: 'q10', text: '千磨万击还坚劲，任尔东西南北风。', author: '郑燮', source: '《竹石》', category: 'courage' },
-    { id: 'q11', text: '长风破浪会有时，直挂云帆济沧海。', author: '李白', source: '《行路难·其一》', category: 'courage' },
-    { id: 'q12', text: '会当凌绝顶，一览众山小。', author: '杜甫', source: '《望岳》', category: 'courage' },
-    { id: 'q13', text: '千里之行，始于足下。', author: '老子', source: '《道德经·第六十四章》', category: 'action' },
-    { id: 'q14', text: '不积跬步，无以至千里；不积小流，无以成江海。', author: '荀子', source: '《劝学》', category: 'action' },
-    { id: 'q15', text: '纸上得来终觉浅，绝知此事要躬行。', author: '陆游', source: '《冬夜读书示子聿》', category: 'action' },
-    { id: 'q16', text: '吾尝终日而思矣，不如须臾之所学也。', author: '荀子', source: '《劝学》', category: 'action' },
-    { id: 'q17', text: '工欲善其事，必先利其器。', author: '孔子', source: '《论语·卫灵公》', category: 'action' },
-    { id: 'q18', text: '欲穷千里目，更上一层楼。', author: '王之涣', source: '《登鹳雀楼》', category: 'action' }
+    { id: 'q01', text: 'Is it not a pleasure to learn and practice what you have learned?', author: 'Confucius', source: 'The Analects, 1.1', category: 'learning' },
+    { id: 'q02', text: 'To know what you know and admit what you do not know: that is understanding.', author: 'Confucius', source: 'The Analects, 2.17', category: 'learning' },
+    { id: 'q03', text: 'Learning without thinking leaves you confused; thinking without learning puts you at risk.', author: 'Confucius', source: 'The Analects, 2.15', category: 'learning' },
+    { id: 'q04', text: 'Review what you have learned and gain new insight, and you can become a teacher.', author: 'Confucius', source: 'The Analects, 2.11', category: 'learning' },
+    { id: 'q05', text: 'When three of us walk together, at least one can be my teacher.', author: 'Confucius', source: 'The Analects, 7.22', category: 'learning' },
+    { id: 'q06', text: 'Be diligent and eager to learn, and unashamed to ask those below you.', author: 'Confucius', source: 'The Analects, 5.15', category: 'learning' },
+    { id: 'q07', text: 'As heaven moves with vigor, a noble person strives without ceasing.', author: 'The Book of Changes', source: 'Qian: Commentary on the Images', category: 'courage' },
+    { id: 'q08', text: 'A scholar must be broad-minded and resolute, for the burden is heavy and the road is long.', author: 'Zengzi', source: 'The Analects, 8.7', category: 'courage' },
+    { id: 'q09', text: 'Do not rejoice because of outward things, or grieve because of your own circumstances.', author: 'Fan Zhongyan', source: 'A Record of Yueyang Tower', category: 'courage' },
+    { id: 'q10', text: 'Through a thousand trials and ten thousand blows, I stand firm, whatever winds may come.', author: 'Zheng Xie', source: 'Bamboo and Rock', category: 'courage' },
+    { id: 'q11', text: 'The day will come to ride the wind and cleave the waves; I will raise my sail and cross the vast sea.', author: 'Li Bai', source: 'The Hard Road, No. 1', category: 'courage' },
+    { id: 'q12', text: 'One day I shall reach the summit and see all the other mountains small below.', author: 'Du Fu', source: 'Gazing at Mount Tai', category: 'courage' },
+    { id: 'q13', text: 'A journey of a thousand li begins with a single step.', author: 'Laozi', source: 'Dao De Jing, Chapter 64', category: 'action' },
+    { id: 'q14', text: 'Without gathering small steps, you cannot travel a thousand li; without gathering small streams, there can be no rivers or seas.', author: 'Xunzi', source: 'Encouraging Learning', category: 'action' },
+    { id: 'q15', text: 'What you learn from books is still shallow; to understand it fully, you must put it into practice.', author: 'Lu You', source: 'Reading on a Winter Night: To My Son Ziyu', category: 'action' },
+    { id: 'q16', text: 'I once spent all day thinking; it was less useful than a brief moment of learning.', author: 'Xunzi', source: 'Encouraging Learning', category: 'action' },
+    { id: 'q17', text: 'To do good work, a craftsman must first sharpen his tools.', author: 'Confucius', source: 'The Analects, 15.10', category: 'action' },
+    { id: 'q18', text: 'To see a thousand li into the distance, climb one floor higher.', author: 'Wang Zhihuan', source: 'Climbing Stork Tower', category: 'action' }
   ];
-  const labels = { learning: '关于学习', courage: '关于勇气', action: '关于行动' };
+  const labels = { learning: 'Learning', courage: 'Courage', action: 'Action' };
   const storageKey = 'hero-lab-favorite-quotes-v1';
   const grid = document.querySelector('#quotes-grid');
   const featuredText = document.querySelector('#featured-quote');
@@ -98,8 +98,8 @@
       favorite.type = 'button';
       favorite.dataset.id = quote.id;
       favorite.setAttribute('aria-pressed', String(favorites.has(quote.id)));
-      favorite.setAttribute('aria-label', `${favorites.has(quote.id) ? '取消收藏' : '收藏'}：${quote.text}`);
-      favorite.title = favorites.has(quote.id) ? '取消收藏' : '收藏名言';
+      favorite.setAttribute('aria-label', `${favorites.has(quote.id) ? 'Remove favorite' : 'Save favorite'}: ${quote.text}`);
+      favorite.title = favorites.has(quote.id) ? 'Remove favorite' : 'Save quote';
       bottom.append(attribution, favorite);
       card.append(top, element('blockquote', '', quote.text), bottom);
       fragment.append(card);
@@ -107,13 +107,13 @@
     if (shown.length === 0) {
       const empty = element('div', 'empty-state');
       empty.append(
-        element('h3', '', activeFilter === 'favorites' && !query ? '还没有收藏的名言' : '没有找到相关名言'),
-        element('p', '', activeFilter === 'favorites' && !query ? '点击名言卡片右下角的星星，把喜欢的一句留下来。' : '试试其他关键词，或切换到“全部”看看。')
+        element('h3', '', activeFilter === 'favorites' && !query ? 'No favorites yet' : 'No quotes found'),
+        element('p', '', activeFilter === 'favorites' && !query ? 'Select the star on a quote to save it here.' : 'Try another keyword or select All to browse the full collection.')
       );
       fragment.append(empty);
     }
     grid.replaceChildren(fragment);
-    if (count) count.textContent = `显示 ${shown.length} / ${quotes.length} 条名言`;
+    if (count) count.textContent = `Showing ${shown.length} / ${quotes.length} quotes`;
   }
 
   filterButtons.forEach(button => {
@@ -145,10 +145,10 @@
       button.textContent = wasFavorite ? '☆' : '★';
       button.setAttribute('aria-pressed', String(!wasFavorite));
       const quote = quotes.find(item => item.id === id);
-      button.setAttribute('aria-label', `${wasFavorite ? '收藏' : '取消收藏'}：${quote.text}`);
-      button.title = wasFavorite ? '收藏名言' : '取消收藏';
+      button.setAttribute('aria-label', `${wasFavorite ? 'Save favorite' : 'Remove favorite'}: ${quote.text}`);
+      button.title = wasFavorite ? 'Save quote' : 'Remove favorite';
     }
-    announce(wasFavorite ? '已取消收藏。' : '已收藏这句名言。');
+    announce(wasFavorite ? 'Quote removed from favorites.' : 'Quote saved to favorites.');
   });
   document.querySelector('#random-quote')?.addEventListener('click', pickQuote);
   document.querySelector('#copy-quote')?.addEventListener('click', async () => {
@@ -158,7 +158,7 @@
     try {
       if (!navigator.clipboard || !window.isSecureContext) throw new Error('clipboard unavailable');
       await navigator.clipboard.writeText(text);
-      announce('名言已复制。');
+      announce('Quote copied.');
     } catch (_) {
       // file:// 或旧浏览器使用选择并复制的兼容路径。
       const field = element('textarea', 'copy-fallback');
@@ -171,7 +171,7 @@
       try { copied = document.execCommand('copy'); } catch (_) { /* 展示手动复制提示 */ }
       field.remove();
       document.querySelector('#copy-quote')?.focus();
-      announce(copied ? '名言已复制。' : '请选中横幅中的名言文字后复制。');
+      announce(copied ? 'Quote copied.' : 'Please select the featured quote text and copy it manually.');
     }
   });
 

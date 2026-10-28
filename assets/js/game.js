@@ -6,10 +6,10 @@
   if (!board) return;
 
   const characters = [
-    { id: 'rocket', name: '火箭浣熊', image: 'assets/images/rocket.png' },
-    { id: 'spider', name: '蜘蛛侠', image: 'assets/images/spider.png' },
-    { id: 'strange', name: '奇异博士', image: 'assets/images/strange.png' },
-    { id: 'thanos', name: '灭霸', image: 'assets/images/thanos.png' }
+    { id: 'rocket', name: 'Rocket', image: 'assets/images/rocket.png' },
+    { id: 'spider', name: 'Spider-Man', image: 'assets/images/spider.png' },
+    { id: 'strange', name: 'Doctor Strange', image: 'assets/images/strange.png' },
+    { id: 'thanos', name: 'Thanos', image: 'assets/images/thanos.png' }
   ];
   const storageKey = 'hero-lab-memory-best-v1';
   const startButton = document.querySelector('#start-game');
@@ -53,7 +53,7 @@
   function updateStats() {
     if (movesDisplay) movesDisplay.textContent = String(moves);
     if (pairsDisplay) pairsDisplay.textContent = String(matched.size);
-    if (bestDisplay) bestDisplay.textContent = best ? `${best.moves} 步 · ${formatTime(best.seconds)}` : '等待你的首场挑战';
+    if (bestDisplay) bestDisplay.textContent = best ? `${best.moves} moves · ${formatTime(best.seconds)}` : 'Complete a game to set your first record';
   }
 
   function shuffledDeck() {
@@ -76,7 +76,7 @@
       card.className = 'game-card';
       card.type = 'button';
       card.dataset.index = String(index);
-      card.setAttribute('aria-label', `第 ${index + 1} 张牌，未翻开`);
+      card.setAttribute('aria-label', `Card ${index + 1}, face down`);
       card.setAttribute('aria-pressed', 'false');
       const back = document.createElement('span');
       back.className = 'game-card-back';
@@ -86,7 +86,7 @@
       symbol.textContent = '</>';
       const label = document.createElement('span');
       label.className = 'game-card-label';
-      label.textContent = 'HERO LAB';
+      label.textContent = 'HERO HOME';
       back.append(symbol, label);
       const front = document.createElement('span');
       front.className = 'game-card-front';
@@ -117,11 +117,11 @@
     if (result) result.hidden = true;
     if (startButton) {
       startButton.disabled = false;
-      startButton.textContent = '开始挑战';
+      startButton.textContent = 'Start game';
     }
     drawBoard();
     updateStats();
-    say('准备好了吗？点击“开始挑战”，找出四组相同的英雄。');
+    say('Ready? Select Start game and find all four matching pairs.');
   }
 
   function start() {
@@ -131,12 +131,12 @@
     startTime = performance.now();
     if (startButton) {
       startButton.disabled = true;
-      startButton.textContent = '挑战进行中';
+      startButton.textContent = 'Game in progress';
     }
     intervalId = setInterval(() => {
       if (timeDisplay) timeDisplay.textContent = formatTime(elapsed());
     }, 250);
-    say('翻开两张牌，记住英雄的位置。配对成功的卡片会保持亮起。');
+    say('Turn over two cards and remember their positions. Matching pairs stay face up.');
   }
 
   function setFlipped(index, flipped) {
@@ -144,7 +144,7 @@
     if (!card) return;
     card.classList.toggle('is-flipped', flipped);
     card.setAttribute('aria-pressed', String(flipped));
-    card.setAttribute('aria-label', flipped ? `第 ${index + 1} 张牌，${deck[index].name}` : `第 ${index + 1} 张牌，未翻开`);
+    card.setAttribute('aria-label', flipped ? `Card ${index + 1}, ${deck[index].name}` : `Card ${index + 1}, face down`);
   }
 
   function complete() {
@@ -158,13 +158,13 @@
       try { localStorage.setItem(storageKey, JSON.stringify(best)); } catch (_) { /* 会话内保留 */ }
     }
     updateStats();
-    say(`挑战完成！你用 ${moves} 步找到了全部四组英雄。`);
-    if (resultTitle) resultTitle.textContent = newBest ? '新纪录，英雄集结！' : '挑战成功，英雄集结！';
-    if (resultDescription) resultDescription.textContent = `你用 ${formatTime(seconds)}、${moves} 步完成了四组配对。${moves === 4 ? '四步全中，记忆力满分！' : '再来一局，试试用更少的步数完成。'}`;
+    say(`Game complete! You found all four pairs in ${moves} moves.`);
+    if (resultTitle) resultTitle.textContent = newBest ? 'New personal best!' : 'All heroes matched!';
+    if (resultDescription) resultDescription.textContent = `You matched all four pairs in ${formatTime(seconds)} and ${moves} moves. ${moves === 4 ? 'A perfect four-move game!' : 'Play again and try to finish in fewer moves.'}`;
     if (result) result.hidden = false;
     if (startButton) {
       startButton.disabled = false;
-      startButton.textContent = '再挑战一次';
+      startButton.textContent = 'Play again';
     }
   }
 
@@ -172,7 +172,7 @@
     const card = event.target.closest('.game-card');
     if (!card || !board.contains(card)) return;
     if (!running) {
-      if (matched.size < characters.length) say('先点击“开始挑战”，计时后再翻开卡片。');
+      if (matched.size < characters.length) say('Select Start game before turning over a card.');
       return;
     }
     const index = Number(card.dataset.index);
@@ -181,7 +181,7 @@
     setFlipped(index, true);
     selected.push(index);
     if (selected.length < 2) {
-      say(`已翻开${character.name}，再找出另一张。`);
+      say(`You found ${character.name}. Find the other matching card.`);
       return;
     }
     moves += 1;
@@ -191,24 +191,24 @@
       selected.forEach(selectedIndex => {
         const matchedCard = board.querySelector(`[data-index="${selectedIndex}"]`);
         matchedCard.classList.add('is-matched');
-        matchedCard.setAttribute('aria-label', `第 ${selectedIndex + 1} 张牌，${deck[selectedIndex].name}，配对成功`);
+        matchedCard.setAttribute('aria-label', `Card ${selectedIndex + 1}, ${deck[selectedIndex].name}, matched`);
         matchedCard.setAttribute('aria-disabled', 'true');
       });
       selected = [];
       updateStats();
       if (matched.size === characters.length) complete();
-      else say(`配对成功！已找到 ${matched.size} / ${characters.length} 组英雄。`);
+      else say(`A match! You have found ${matched.size} / ${characters.length} pairs.`);
       return;
     }
     locked = true;
     updateStats();
-    say('这两张不一样，记住位置，再试一次。');
+    say('These cards do not match. Remember their positions and try again.');
     flipTimeout = setTimeout(() => {
       setFlipped(first, false);
       setFlipped(second, false);
       selected = [];
       locked = false;
-      say('继续翻牌，寻找下一组相同的英雄。');
+      say('Keep going! Find the next matching pair.');
     }, 800);
   });
 

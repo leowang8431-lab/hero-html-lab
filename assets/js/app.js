@@ -1,25 +1,33 @@
-/* DRY：所有页面共用这一份导航与页脚，无需重复编写导航 HTML。 */
+/* DRY：四个页面共用同一份导航栏和页脚。 */
 (() => {
   'use strict';
   const pages = [
-    { id: 'home', href: 'index.html', label: '首页', en: 'HOME' },
-    { id: 'quotes', href: 'quotes.html', label: '名言宇宙', en: 'QUOTES' },
-    { id: 'projects', href: 'projects.html', label: '创意工坊', en: 'PROJECTS' },
-    { id: 'machine', href: 'machine.html', label: '游戏实验室', en: 'MACHINE' }
+    { id: 'home', href: 'index.html', label: 'Home' },
+    { id: 'quotes', href: 'quotes.html', label: 'Quotes' },
+    { id: 'projects', href: 'projects.html', label: 'Projects' },
+    { id: 'machine', href: 'machine.html', label: 'Game' }
   ];
-  const current = document.body.dataset.page;
   const header = document.getElementById('site-header');
-  if (header) header.innerHTML = `<div class="container header-inner"><a class="brand" href="index.html" aria-label="HERO LAB 首页"><span class="brand-mark">H<span>╱</span></span><span>HERO LAB<small>英雄学习基地</small></span></a><button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="展开导航"><span></span><span></span></button><nav id="main-nav" aria-label="主要导航">${pages.map(page => `<a href="${page.href}"${page.id === current ? ' aria-current="page"' : ''}>${page.label}<span>${page.en}</span></a>`).join('')}</nav><a class="header-play" href="machine.html">LET’S PLAY <span aria-hidden="true">↗</span></a></div>`;
-  const toggle = document.querySelector('.menu-toggle');
+  const current = document.body.dataset.page;
+  if (header) header.innerHTML = `<nav id="main-nav" aria-label="Main navigation">${pages.map(page => `<a href="${page.href}"${current === page.id ? ' aria-current="page"' : ''}>${page.label}</a>`).join('')}<button id="theme-toggle" type="button" role="switch" aria-label="Switch to dark mode" aria-checked="false"><span class="theme-knob" aria-hidden="true"></span></button></nav>`;
+  const toggle = document.getElementById('theme-toggle');
+  function syncTheme() {
+    const dark = document.documentElement.dataset.theme === 'dark';
+    if (toggle) {
+      toggle.setAttribute('aria-checked', String(dark));
+      toggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      toggle.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
+    }
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = dark ? '#14161a' : '#faf7f2';
+  }
   if (toggle) toggle.addEventListener('click', () => {
-    const open = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!open));
-    toggle.setAttribute('aria-label', open ? '展开导航' : '收起导航');
-    header.classList.toggle('menu-open', !open);
+    const theme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = theme;
+    try { localStorage.setItem('hero-home-theme', theme); } catch (_) { /* 本次切换仍可用 */ }
+    syncTheme();
   });
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && toggle && toggle.getAttribute('aria-expanded') === 'true') { toggle.click(); toggle.focus(); }
-  });
+  syncTheme();
   const footer = document.getElementById('site-footer');
-  if (footer) footer.innerHTML = `<div class="container footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">H<span>╱</span></span><span>HERO LAB<small>KEEP LEARNING. KEEP CREATING.</small></span></a><p>从第一行代码，走向无限可能。<small>HTML / CSS / JAVASCRIPT · 学习与课程展示项目</small></p><a href="#main" class="back-top" aria-label="返回页面顶部">↑</a></div><div class="container footer-bottom"><span>© 2026 HERO LAB · 期末网页设计作业</span><span>角色素材来自提供的图片，仅用于课程学习展示。</span></div>`;
+  if (footer) footer.innerHTML = '<p>© 2026 Hero Home · My Hero Website</p><p>A final project made with HTML, CSS and JavaScript.</p>';
 })();

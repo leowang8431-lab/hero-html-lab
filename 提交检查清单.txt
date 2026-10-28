@@ -1,4 +1,4 @@
-期末作业检查清单 — HERO LAB
+期末作业检查清单 — Hero Home
 =================================================
 本清单明确区分网页功能与需要个人账号或本机软件证据的要求。
 
@@ -6,17 +6,17 @@
    已完成：原生 HTML / CSS / JavaScript 项目已建立。
 
 2. Index Page with Hero image and overview
-   首页结构与网站简介已完成；人物素材最终状态待抠图完成后核验。
+   已完成：首页人物横幅、网站简介；四张原图人物已抠成透明PNG，排除背景与手机UI。
 
 3. Quotes page with min. 15 quotes
-   已完成：18 条名言，含作者与作品出处。
+   已完成：18 条古典名言的英文译文，含英文作者与作品出处。
 
 4. Quotes page styled + Hero with random quote
    已完成：统一美化，Math.random() 随机展示且避免连续重复。
    额外提供分类、关键词搜索、收藏及复制。
 
 5. Project page with min. 5 project ideas
-   已完成：6 个项目构想，含功能、实践路线及拓展方向。
+   已完成：6 个项目构想，含英文介绍、功能与练习内容。
 
 6. DRY Navigation using JS
    已完成：assets/js/app.js 只定义一次导航模板，四页通过占位容器加载。
@@ -26,6 +26,7 @@
    待本人完成安装与登录验证。
    已提供 .vscode/extensions.json 扩展推荐，以及 README.txt 中的官方安装说明。
    已安装的 VS Code 扩展列表中未检测到 AI 代码助手。
+   本次已尝试命令行安装，但扩展市场连接未完成，尚未成功安装。
    建议截图：OpenAI Codex 扩展已安装 + 用助手解释一次本站代码。
 
 8. Machine page with interactive game
@@ -36,7 +37,7 @@
 
 10. Website folder initialised
     已完成：网站文件夹已 git init -b main。
-    已完成首次本地提交；尚未推送任何远程仓库。
+    已完成本地提交。源码ZIP不含.git；原始工作区文件夹保留完整Git记录。
 
 11. GITHUB Account
     已核实：连接的 GitHub 账号为 leowang8431-lab。
@@ -44,11 +45,13 @@
 12. Remote Repository Connected and Code Pushed
     待连接个人 GitHub 仓库并推送，尚不能计为完成。
     Sites 的源码托管不等于课程要求的 GitHub 仓库。
-    尚未获得课程目标仓库地址，GitHub 连接器没有创建仓库的操作。
-    在 README.txt 中提供了可直接替换地址使用的推送命令。
+    你尚未创建本次作业的GitHub仓库；当前连接器没有创建仓库的操作。
+    README.txt 含空仓库创建入口、推送命令，并附connect-github.ps1辅助脚本。
 
 13. Website Styled and Finalised
-    页面与互动代码已完成；真实 Chrome 的 42 项结构与交互检查通过，四页在桌面及手机均无水平溢出。人物素材与素材整合后的最终截图、打包仍待完成。
+    已完成：全英文界面，简洁居中布局，日夜模式，四张透明人物素材。
+    真实Chrome的82项检查通过：桌面/手机布局、图片加载、英文界面、
+    导航状态、名言交互、游戏逻辑、主题跨页记忆均正常，无JavaScript异常。
 
 提交前请补充个人姓名、学号、课程信息，并拍摄课程要求的证据截图。
 

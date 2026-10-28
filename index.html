@@ -1,37 +1,45 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="HERO LAB 英雄学习基地：一个关于学习、灵感和动手创造的 HTML 期末网站。">
-  <meta name="theme-color" content="#f6f4ee"><title>HERO LAB · 英雄学习基地</title>
-  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hero Home: a student website built with HTML, CSS and JavaScript, featuring quotes, project ideas and a memory game.">
+  <meta name="theme-color" content="#faf7f2">
+  <title>Home · Hero Home</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/theme.js"></script>
   <script src="assets/js/app.js" defer></script>
 </head>
 <body data-page="home">
-  <a class="skip-link" href="#main">跳转到主要内容</a><header id="site-header"></header>
-  <main id="main" class="container">
-    <section class="home-hero">
-      <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> THE LEARNING ADVENTURE STARTS HERE</div>
-        <h1>小小代码。<br><span>无限可能。</span></h1>
-        <p class="hero-english">Every hero starts somewhere.</p>
-        <p class="hero-description">不必拥有超能力，也能创造自己的世界。<br>在这里收集灵感、探索创意，用每一行代码开启新冒险。</p>
-        <div class="button-row"><a class="button button-orange" href="projects.html">开启我的探索 <span aria-hidden="true">↗</span></a><a class="text-link light" href="machine.html">先玩一局 <span aria-hidden="true">→</span></a></div>
-        <div class="hero-meta"><span>HTML / CSS / JAVASCRIPT</span><span>期末学习项目 · 2026</span></div>
-      </div>
-      <div class="hero-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-planet"></div><span class="art-coordinate top">WEB UNIVERSE / 001</span><span class="art-star star-one">✳</span><span class="art-star star-two">+</span>
-        <img class="home-character" src="assets/images/spider.png" alt="从提供图片中分离出的红蓝战衣蜘蛛侠" fetchpriority="high">
-        <div class="floating-note"><span class="note-icon">&lt;/&gt;</span><div>你的超能力？<strong>保持好奇，开始创造。</strong></div></div><span class="art-coordinate bottom">BEGINNER TODAY. CREATOR TOMORROW.</span>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header id="site-header"></header>
+  <main id="main">
+    <section class="hero home-hero">
+      <h1>Welcome to Hero Home</h1>
+      <p>A little website. A few familiar heroes.</p>
+      <p>I built this site with HTML, CSS and a little JavaScript.</p>
+      <div class="hero-characters" aria-label="Three characters together">
+        <img src="assets/images/spider.png" alt="Spider-Man" class="hero-spider" fetchpriority="high">
+        <img src="assets/images/strange.png" alt="Doctor Strange" class="hero-strange">
+        <img src="assets/images/thanos.png" alt="Thanos" class="hero-thanos">
       </div>
     </section>
-    <section class="intro-strip" aria-label="网站简介"><span class="mini-label">A LITTLE ABOUT THIS LAB</span><p>一个从零开始的网页学习实验室。<br><strong>把灵感写进页面，让想法变成现实。</strong></p><span class="strip-arrow" aria-hidden="true">↘</span></section>
-    <section class="explore-section"><div class="section-heading"><div><span class="eyebrow dark">CHOOSE YOUR NEXT MISSION</span><h2>今天，探索什么？</h2></div><span class="section-aside">三个入口，一段新的旅程。</span></div>
-      <div class="mission-grid">
-        <a class="mission-card quote-mission" href="quotes.html"><div class="mission-top"><span>01 / INSPIRATION</span><span class="circle-arrow">↗</span></div><div class="mission-symbol" aria-hidden="true">“</div><h3>给思考充点电</h3><p>18 条值得停下来读一读的名言，<br>找到今天向前走的力量。</p><span class="mission-link">进入名言宇宙 <span>→</span></span></a>
-        <a class="mission-card project-mission" href="projects.html"><div class="mission-top"><span>02 / CREATION</span><span class="circle-arrow">↗</span></div><div class="mission-symbol code-symbol" aria-hidden="true">&lt;/&gt;</div><h3>让创意落地</h3><p>从个人名片到习惯打卡，<br>6 个适合初学者的项目构想。</p><span class="mission-link">探索项目灵感 <span>→</span></span></a>
-        <a class="mission-card game-mission" href="machine.html"><div class="mission-top"><span>03 / PLAY</span><span class="circle-arrow">↗</span></div><div class="mission-symbol game-symbol" aria-hidden="true">✦</div><h3>记忆力，集结！</h3><p>翻开卡牌，找到英雄搭档。<br>用最少的步数完成记忆挑战。</p><span class="mission-link">接受游戏挑战 <span>→</span></span></a>
-      </div>
+    <section class="about-site">
+      <h2>About this site</h2>
+      <p>Here you will find a collection of quotes, some project ideas and a simple hero memory game. Use the navigation above to explore.</p>
+      <img class="about-character" src="assets/images/rocket.png" alt="Rocket wearing a blue vest">
+      <p>I like these characters and wanted to make learning web development a little more fun. This site brings together my practice with page structure, styling and simple interactions.</p>
     </section>
-    <section class="journey-section"><div class="journey-quote"><span class="eyebrow dark">SMALL STEPS, REAL PROGRESS</span><h2>每一位创造者，<br>都曾是初学者。</h2><p>这个网站记录了从页面结构到交互逻辑的学习：<br>用 HTML 搭骨架，用 CSS 表达，用 JavaScript 让它动起来。</p></div><div class="learning-stack"><div><span>01</span><strong>HTML</strong><p>语义化结构 · 多页面内容</p></div><div><span>02</span><strong>CSS</strong><p>响应式布局 · 统一视觉样式</p></div><div><span>03</span><strong>JavaScript</strong><p>复用导航 · 随机名言 · 互动游戏</p></div></div></section>
-    <section class="closing-banner"><div><span class="eyebrow">READY WHEN YOU ARE</span><h2>下一次进步，从动手开始。</h2></div><a class="button button-cream" href="projects.html">寻找一个小项目 <span>↗</span></a></section>
-  </main><footer id="site-footer"></footer>
-</body></html>
+    <section>
+      <h2>What can you do here?</h2>
+      <ul class="home-links">
+        <li><a href="quotes.html">Read some quotes</a>: 18 thoughts on learning, courage and action.</li>
+        <li><a href="projects.html">Explore project ideas</a>: six small projects for beginners.</li>
+        <li><a href="machine.html">Play a game</a>: turn over the cards and find the matching heroes.</li>
+      </ul>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>
