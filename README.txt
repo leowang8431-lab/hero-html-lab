@@ -4,7 +4,11 @@ HTML 期末项目 / 2026
 
 一、如何打开
 
-解压整个文件夹，双击 index.html 即可使用。
+直接预览：打开压缩包最外层的 OPEN-WEBSITE.html，或单独下载 hero-home-standalone.html。
+该文件自带全部图片、样式和脚本，不需要旁边放 assets，也不需要联网。
+
+查看或提交可编辑源码：先解压整个 hero-home 文件夹，再双击其中的 index.html。
+不要直接在压缩包中打开 hero-home/index.html；Windows可能只临时解出一个HTML，导致样式、导航和图片丢失。
 请保持 index.html、其余 HTML 文件和 assets 文件夹的相对位置。
 本项目没有第三方前端依赖，不需要 npm install，也不需要构建。
 导航、名言和游戏需要浏览器允许 JavaScript。
@@ -31,6 +35,7 @@ assets/js/theme.js    首次绘制前读取主题选择，减少跨页切换时�
 assets/js/quotes.js   名言数据、随机展示、筛选、搜索与收藏逻辑。
 assets/js/game.js     Fisher–Yates 洗牌、翻牌判断、重开与成绩保存。
 assets/images/        人物透明素材与原创代码图标 favicon.svg。
+build-standalone.mjs  把四个页面与所有资源合并成独立预览HTML，源码仍保留四页结构。
 
 收藏和游戏纪录保存在当前浏览器的 localStorage；清除浏览器数据会清除纪录。
 当浏览器不允许存储时，页面仍可运行，收藏与最佳成绩仅在当前会话可用。
@@ -62,6 +67,7 @@ assets/images/        人物透明素材与原创代码图标 favicon.svg。
 
 原始工作区的网站文件夹已 Git 初始化并保存提交历史。
 下载的源码 ZIP 不含 .git、dist 和临时文件，解压后可用附带的脚本初始化并推送：
+压缩包最外层的 OPEN-WEBSITE.html 是完整预览，hero-home/ 内是原生多页面源码。
 
   .\connect-github.ps1 -RepositoryUrl https://github.com/YOUR_USERNAME/hero-html-lab.git
 

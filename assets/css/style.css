@@ -38,6 +38,7 @@ p { margin: .6rem 0; }
 a { color: var(--accent); text-underline-offset: 3px; }
 button, input { font: inherit; }
 button { cursor: pointer; }
+button, a, input { -webkit-tap-highlight-color: transparent; }
 button:disabled { cursor: default; opacity: .65; }
 img { display: block; max-width: 100%; height: auto; }
 :focus-visible { outline: 2px solid var(--active); outline-offset: 4px; }
@@ -46,9 +47,9 @@ img { display: block; max-width: 100%; height: auto; }
 .skip-link:focus { top: 12px; }
 /* The navigation HTML comes from app.js, with no repeated links in page HTML. */
 #main-nav { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--border); margin-bottom: 2rem; }
-#main-nav a { color: var(--text); text-decoration: none; font-weight: 500; }
+#main-nav a { color: var(--text); text-decoration: none; font-weight: 500; padding: .4rem 0; }
 #main-nav a:hover { color: var(--accent); }
-#main-nav a[aria-current="page"] { color: var(--active); font-weight: 700; }
+#main-nav a[aria-current="page"] { color: var(--active); font-weight: 700; text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: 2px; }
 #theme-toggle { margin-left: auto; position: relative; width: 56px; height: 29px; border: 0; border-radius: 999px; background: var(--border); flex: 0 0 56px; }
 .theme-knob { position: absolute; top: 4px; left: 4px; width: 21px; height: 21px; background: var(--surface); border-radius: 50%; box-shadow: 0 1px 3px #0003; transition: transform .2s; }
 .theme-knob::after { content: '☾'; display: grid; place-items: center; font-size: 16px; line-height: 21px; color: #555; }
@@ -68,9 +69,11 @@ html[data-theme="dark"] .theme-knob::after { content: '☀'; }
 .home-links li { margin: .6rem 0; }
 .page-character { max-height: 200px; width: auto; margin: 1rem auto; }
 .page-intro { color: var(--soft); }
-.button, .game-actions button { display: inline-block; padding: .5rem .9rem; border: 1px solid transparent; border-radius: 4px; background: var(--accent); color: var(--surface); text-decoration: none; font-size: .9rem; }
+.button, .game-actions button { display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: .55rem 1rem; border: 1px solid transparent; border-radius: 6px; background: var(--accent); color: var(--surface); text-decoration: none; font-size: .9rem; transition: background-color .15s, border-color .15s; }
 html[data-theme="dark"] .button, html[data-theme="dark"] .game-actions button { color: #1e2126; }
 .button:hover, .game-actions button:hover { background: var(--accent-hover); }
+.button.button-secondary, .game-actions #restart-game { background: var(--surface); color: var(--accent); border-color: var(--border); }
+.button.button-secondary:hover, .game-actions #restart-game:hover { border-color: var(--accent); }
 .button-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
 .text-link { border: 0; background: none; color: var(--accent); font-size: .9rem; text-decoration: underline; text-underline-offset: 4px; }
 /* Quotes */
@@ -86,12 +89,13 @@ html[data-theme="dark"] .filter-button.active { color: #1e2126; }
 .search-box input { padding: .45rem .65rem; border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 4px; max-width: 100%; width: 240px; }
 .result-count, .collection-note { font-size: .85rem; color: var(--muted); }
 .quotes-grid { display: block; }
-.quote-card { max-width: 38rem; padding: 1.25rem 1.5rem; border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; margin: 1rem 0 1.3rem; }
+.quote-card { max-width: 100%; padding: 1.25rem 1.5rem; border: 1px solid var(--border); border-left: 3px solid var(--accent); background: var(--surface); border-radius: 0 8px 8px 0; margin: 1rem 0 1.3rem; }
 .quote-card-top, .quote-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: .8rem; }
 .quote-index, .quote-category { color: var(--muted); font-size: .75rem; }
 .quote-card blockquote { font-size: 1.1rem; margin: .8rem 0; }
 .quote-author, .quote-source { font-size: .85rem; color: var(--soft); margin: .1rem 0; }
-.favorite-button { width: 31px; height: 31px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 50%; background: none; color: var(--muted); font-size: 1.15rem; line-height: 1; }
+.favorite-button { width: 40px; height: 40px; flex-shrink: 0; border: 1px solid var(--border); border-radius: 50%; background: none; color: var(--muted); font-size: 1.15rem; line-height: 1; }
+.favorite-button:hover { border-color: var(--accent); color: var(--accent); }
 .favorite-button[aria-pressed="true"] { color: var(--accent); }
 .empty-state { padding: 2rem 0; color: var(--soft); }
 /* Project ideas */
@@ -111,6 +115,7 @@ html[data-theme="dark"] .filter-button.active { color: #1e2126; }
 .game-stats small { font-size: 1rem; }
 .game-board { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; }
 .game-card { position: relative; height: 150px; padding: 0; border: 1px solid var(--border); border-radius: 6px; background: var(--card-back); overflow: hidden; color: var(--text); }
+.game-card:not(.is-flipped):not(.is-matched):hover { border-color: var(--accent); }
 .game-card-back, .game-card-front { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
 .game-card-symbol { font-size: 1.8rem; color: var(--accent); font-family: monospace; }
 .game-card-label { font-size: .65rem; color: var(--soft); }
@@ -132,6 +137,7 @@ html[data-theme="dark"] .filter-button.active { color: #1e2126; }
 .keyboard-hint, .learning-note { color: var(--soft); font-size: .85rem; }
 #site-footer { border-top: 1px solid var(--border); margin-top: 3rem; padding: 1rem 0 .5rem; color: var(--muted); font-size: .85rem; }
 #site-footer p { margin: .25rem 0; }
+body[data-page="machine"] .page-character { max-height: 135px !important; }
 @media(max-width: 520px) {
   body { padding: 1rem; font-size: 15px; }
   #main-nav { gap: 1.1rem; margin-bottom: 1.5rem; }
