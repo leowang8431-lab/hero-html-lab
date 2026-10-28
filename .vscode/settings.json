@@ -1,0 +1,7 @@
+{
+  "files.encoding": "utf8",
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "files.exclude": { "dist": true }
+}
